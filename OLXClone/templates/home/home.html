@@ -3,13 +3,50 @@
 {% block title %} Home{% endblock title %}
 
 {% block body %}
-
+<br><br>
+<div>
+  <center>
+    <!-- <img src="https://statics.olx.in/external/base/img/hero-bg-in.jpg" width="1500px" > -->
+    <img src="{% static 'home_image.jpg' %}" width="1500px" height="250px">
+  </center>
+</div>
+<br><br>
+<!-- <div class="container">
+  <div class="raw">
+    <div class="col-sm-4">
+      <a href="/buyer/buyItem/">
+        <div class="card text-white bg-primary mb-3">
+          <div class="card-header">Buy</div>
+            <div class="card-body">
+              <p class="card-text">Buy item</p>
+            </div>
+          </div>
+        </div>
+    </a>
+    </div>
+    <div class="class-sm-4">
+      <a href="/seller/addItem/">
+        <div class="card text-white bg-primary mb-3">
+          <div class="card-header">sell</div>
+            <div class="card-body">
+              <p class="card-text">sell item</p>
+            </div>
+          </div>
+        </div>
+    </a>
+    </div>
+    <div class="col-sm-4">
+      <img src="{% static 'buy-and-sell3.jpg' %}" width="250px" height="250px">
+    </div>
+  </div>
+</div> -->
 <div class="container">
-  <div class="card mb-3" style="margin-top:5%; margin-left : 5%; max-width: 1000px;">
+  <div class="card mb-3" style="margin-top:5%; margin-left : 10%; max-width: 1000px;">
     <div class="row g-0">
       <div class="col-md-6">
         <img src="{% static 'buy-and-sell3.jpg' %}" class="card-img-top" height="300px">
       </div>
+
       <div class="col-md-6">
         <div class="card-body">
           <br><br>
@@ -24,7 +61,6 @@
   </div>
 </div>
 
-
 <!-- <div class="container" style="border:12px solid black;top: 0%;left: 30%; width: 350px;height: 350px;">
   <img src="{% static 'buy-and-sell3.jpg' %}" width="250px" height="250px">
   <p>Hello ji</p>
@@ -32,14 +68,14 @@
 
 <br><br><br>
 <div class="container mb-10">
-<h3> Fresh Recommendations</h3><br>
+<h3>Fresh Recommendations</h3><br>
   <div class="row">
     {% for x in items %}
     <div class="col-sm-4">
      
       <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
         <div class="card-header">{{x.item_name}}</div>
-        <img src="{{x.photo.url}}" class="card-img-top" height="300px">
+        <img src="{{x.photo.url}}" class="card-img-top" height="200px">
         <div class="card-body">
           <h4 class="card-title">&#8377 {{x.prize}}
             <form action="{% url 'show_item_details' x.id %}" method="post" class="d-inline" style="margin-left: 35%;">

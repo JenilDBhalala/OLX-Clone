@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Added Item{% endblock title %}
+
+{% block body %}
+
+<div class="card mb-3" style="margin-top:5%; margin-left : 10%; max-width: 1000px;">
+    {% if item %}
+    <div class="row g-0">
+      <div class="col-md-6">
+        <img src="{{item.photo.url}}" class="card-img-top" height="300px">
+      </div>
+      <div class="col-md-4">
+        <div class="card-body">
+          <h5 class="card-title">{{item.item_name}}</h5>
+          <p class="card-text">prize : {{item.prize}}</p>
+          <p class="card-text">Model Year : {{item.model_year}}</p>
+          <p class="card-text">city : {{item.city}}</p>
+          <p class="card-text">Description : {{item.description}}</p>
+          <p class="card-text"><small class="text-muted">Item added succesfully</small></p>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+    
+{% endblock %}
+

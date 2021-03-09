@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os;
 from django.contrib.messages import constants as messages
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -82,11 +81,11 @@ WSGI_APPLICATION = 'OLXClone.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE' : 'django.db.backends.mysql',
-        'NAME' : 'firstproject' , # Name of the database*
-        'USER': 'root',  #user name for the database
-        'PASSWORD' : 'jenil', # password 
-        'HOST' : 'localhost',  # IP address of the database
-        'PORT' : '3306', # port number of database server
+        'NAME' : 'olxclone',
+        'USER' : 'root',
+        'PASSWORD' : 'bB@12345',
+        'HOST' : 'localhost',
+        'PORT' : '3306',
     }
 }
 
@@ -134,8 +133,7 @@ STATICFILES_DIRS = [
 STATIC_URL = '/static/'
 # MEDIA_URL='/media/'
 MEDIA_ROOT=BASE_DIR/'media'
-
-#display danger messages
+#for error message
 MESSAGE_TAGS = {
     messages.ERROR:'danger'
 }
