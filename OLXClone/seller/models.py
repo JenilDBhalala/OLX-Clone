@@ -8,7 +8,7 @@ class Item(models.Model):
     item_name=models.CharField(max_length=20)
     prize=models.IntegerField()
     model_year=models.CharField(max_length=4)
-    city=models.CharField(max_length=10)
+    city=models.CharField(max_length=10,default="surat")
     photo=models.ImageField(upload_to="itemImage")
     description=models.TextField()
     seller_id=models.IntegerField()

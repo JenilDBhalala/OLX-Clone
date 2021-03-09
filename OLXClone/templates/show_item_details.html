@@ -1,28 +1,27 @@
-
 {% extends 'base.html' %}
 
-{% block title %}Item Details{% endblock title %}
+{% block title %} Home{% endblock title %}
 
 {% block body %}
-
-<div class="card mb-3" style="margin-top:5%; margin-left : 10%; max-width: 1000px;">
-    {% if item %}
-    <div class="row g-0">
-      <div class="col-md-6">
-        <img src="{{item.photo.url}}" class="card-img-top" height="300px">
-      </div>
-      <div class="col-md-4">
-        <div class="card-body">
-          <h5 class="card-title">{{item.item_name}}</h5>
-          <p class="card-text">prize : {{item.prize}}</p>
-          <p class="card-text">Model Year : {{item.model_year}}</p>
-          <p class="card-text">city : {{item.city}}</p>
-          <p class="card-text">Description : {{item.description}}</p>
-        </div>
+    
+    <div class="container mb-10">
+        <div class="row" >
+            {% if item %}
+                <!-- <p>{{item.item_name}}</p> -->
+            <div class="col-sm-4">
+              <div class="card m-2">
+                <img src="{{item.photo.url}}" class="card-img-top" height="200px">
+                    <p>item name={{item.item_name}}</p>
+                  <p>prize={{item.prize}}</p>
+                  <p>Model Year={{item.model_year}}</p>
+                  <p>City={{item.model_year}}</p>
+                  <p>Description={{item.description}}</p>
+                  </div>
+                </div>
+            </div>
+            {% endif %}
+            item added succesfully!!!
+          </div>
       </div>
     </div>
-    {% endif %}
-  </div>
-    
-{% endblock %}
-
+ {% endblock %}

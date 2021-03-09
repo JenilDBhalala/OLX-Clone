@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os;
-from django.contrib.messages import constants as messages
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -83,12 +82,11 @@ DATABASES = {
         'ENGINE' : 'django.db.backends.mysql',
         'NAME' : 'olxclone',
         'USER' : 'root',
-        'PASSWORD' : 'bB@12345',
+        'PASSWORD' : '',
         'HOST' : 'localhost',
         'PORT' : '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -133,7 +131,3 @@ STATICFILES_DIRS = [
 STATIC_URL = '/static/'
 # MEDIA_URL='/media/'
 MEDIA_ROOT=BASE_DIR/'media'
-#for error message
-MESSAGE_TAGS = {
-    messages.ERROR:'danger'
-}

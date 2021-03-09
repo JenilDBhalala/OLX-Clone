@@ -19,8 +19,7 @@ def addItem(request):
     else:
         usr_id=request.user.id
         fm=AddItemForm()
-        fm.initial['seller_id']=1
+        fm.initial['seller_id']=usr_id
         fm.fields['seller_id'].widget=forms.HiddenInput()
-        
         return render(request,'addItem.html',{'form':fm})
 
