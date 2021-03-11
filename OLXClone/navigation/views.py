@@ -4,7 +4,7 @@ from navigation.models import Contact
 from django.contrib import messages
 from django.contrib.auth.models import User 
 import re
-from django.contrib.auth  import authenticate,  login, logout
+from django.contrib.auth  import authenticate, login, logout
 from seller.models import Item
 # Create your views here.
 
@@ -100,11 +100,20 @@ def handelLogout(request):
     logout(request)
     messages.success(request, "Successfully Logged out!")
     return redirect('/')
-# def search(request):
-#     return HttpResponse("We are at search")
 
-# def productview(request):
-#     return HttpResponse("We are at productview")
-
-# def checkout(request):
-#     return HttpResponse("We are at checkout")
+def search(request):
+    query=request.GET['query']
+    if query is not "":
+        if len(query)>75 and len(query)<1:
+            Items=Item.objects.none()
+        else:
+            itemByName = Item.objects.filter(item_name__icontains=query)
+            itemByCity = Item.objects.filter(city__icontains=query)
+            itemByDescr = Item.objects.filter(description__icontains=query)
+            Items = itemByName.union(itemByCity,itemByDescr)
+        if Items.count()==0:
+            messages.warning(request, "No search results found. Please refine your query.")
+        params={'items': Items, 'query': query}
+        return render(request, 'home/search.html', params)
+    else:
+        return redirect("/")

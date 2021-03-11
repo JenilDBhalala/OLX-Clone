@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Search{% endblock title %}
+
+{% block body %}
+    <div class="container mb-10"><br>
+        <h2>Search results : </h2><br>
+            {% if items|length < 1 %}
+            <p>No search results</p>
+            Your search query : <b>{{query}}</b> did not match any documents. <br>
+            Suggestions:
+            <ul>
+                <li>Make sure that all words are spelled correctly.</li>
+                <li> Try more general keywords.</li>
+                <li> Try fewer keywords.</li>
+                <li> Try different keywords.</li>
+            </ul>         
+            {% endif %}
+        <div class="row">
+            {% for x in items %}
+            <div class="col-sm-4">
+            <div class="card text-dark bg-light mb-3" style="max-width: 19rem;">
+                <div class="card-header">{{x.item_name}}</div>
+                <img src="{{x.photo.url}}" class="card-img-top" height="200px">
+                <div class="card-body">
+                
+                    <form action="{% url 'show_item_details' x.id %}" method="post" class="d-inline" style="margin-left: 35%;">
+                    {% csrf_token %}
+                    <h4 class="card-title">&#8377 {{x.prize}} <input type="submit" value="view" class="btn btn-outline-success"> </h4>
+                    </form>
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+ {% endblock %}

@@ -2,8 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-
-
 class Item(models.Model):
     item_name=models.CharField(max_length=20)
     prize=models.IntegerField()
@@ -14,3 +12,6 @@ class Item(models.Model):
     seller_id=models.IntegerField()
     mo_no=models.CharField(max_length=10)
     date=models.DateTimeField(auto_now=True)  
+
+    def __str__(self):
+          return self.item_name

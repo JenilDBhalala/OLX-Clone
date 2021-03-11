@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'loginmodule.apps.LoginmoduleConfig',
     'buyer.apps.BuyerConfig',
     'seller.apps.SellerConfig',
     'navigation','user'
@@ -81,9 +80,9 @@ WSGI_APPLICATION = 'OLXClone.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE' : 'django.db.backends.mysql',
-        'NAME' : 'olxclone',
+        'NAME' : 'firstproject',
         'USER' : 'root',
-        'PASSWORD' : 'bB@12345',
+        'PASSWORD' : 'jenil',
         'HOST' : 'localhost',
         'PORT' : '3306',
     }
@@ -133,6 +132,7 @@ STATICFILES_DIRS = [
 STATIC_URL = '/static/'
 # MEDIA_URL='/media/'
 MEDIA_ROOT=BASE_DIR/'media'
+
 #for error message
 MESSAGE_TAGS = {
     messages.ERROR:'danger'
