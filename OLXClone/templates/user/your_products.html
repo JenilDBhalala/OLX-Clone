@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Products{% endblock title %}
+
+{% block body %}
+<div class="container mb-10">
+    <h4 class="text-center alert alert-info mt-3">Your Items</h4>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date & Time</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Model Year</th>
+            <th scope="col">City</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for x in items %}
+                <tr>
+                    <th scope="row">{{x.id}}</th>
+                    <td>{{x.date}}</td>
+                    <td>{{x.item_name}}</td>
+                    <td>{{x.prize}}</td>
+                    <td>{{x.model_year}}</td>
+                    <td>{{x.city}}</td>
+                    <td>
+                        <form action="{% url 'edit_item' x.id %}" method="get">
+                            {% csrf_token %}
+                            <input type="submit" value="Edit" class="btn btn-outline-success">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{% url 'delete_item' x.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Delete" class="btn btn-outline-danger">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+          
+        </tbody>
+      </table>
+    </div>
+{% endblock %}
+

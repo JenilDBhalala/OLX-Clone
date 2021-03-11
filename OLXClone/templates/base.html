@@ -12,11 +12,8 @@
     <style>
       
       body{
-      background-image: url("{% static 'background1.jpeg' %}");
-      background-repeat: no-repeat;
-      background-attachment: fixed;  
-      background-size: cover;
-      background-color: #cfd6db;
+      /* background: url("{% static 'background1.jpeg' %}") no-repeat center center fixed; */
+      background-color: #ddf7ff;
     }
     </style>
     <title>{% block title %}   {% endblock title %}</title>
@@ -25,6 +22,9 @@
   </head>
 
   <body bgcolor="#AED6F1">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/">OLXClone</a>
 
@@ -54,17 +54,25 @@
           </ul>
 
           <div class="ml-auto form-inline ">
-            <form method="get" action="/search"class="form-inline my-2 my-lg-0 mx-3">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query">
+            <form method="get" action="/search/" class="form-inline my-2 my-lg-0 mx-3">
+              <input class="form-control mr-sm-2"  list="itemlistOptions" placeholder="Search" aria-label="Search" name="query" id="query">
+              <datalist id="itemlistOptions">
+                <option value="Car">
+                <option value="Bike">
+                <option value="Laptop">
+                <option value="Mobile">
+                <option value="Tablet">
+              </datalist>
               <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Search</button>
               <a href="/admin" role="button" target="_blank" class="btn btn-outline-success m-2 my-sm-0"> Admin Panel </a>
             </form>
-
+            
             {% if user.is_authenticated %}
             <ul class="navbar-nav mr-3">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/user/your_products/">Your Products</a>
                       <a class="dropdown-item" href="/logout">Logout</a>
                 </div>
               </li>
@@ -123,7 +131,7 @@
                     <label for="lname">Last Name</label>
                     <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Your Last Name" pattern="[a-zA-Z\s]+" title="Last name must contain letters only" required>
                   </div>
-
+                  
                   <div class="form-group">
                     <label for="email">Email address</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
@@ -189,8 +197,6 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
   </body>
 </html>

@@ -1,17 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buy item</title>
-</head>
-<body>
-    <form action="/buyer/result/" method="post">
-        {% csrf_token %}
-        enter item name<input type="text" name="item_name"><br>
-        enter city <input type="text" name="city">
-        <input type="submit" value="submit">
-    </form>
-</body>
-</html>
+
+{% extends 'base.html' %}
+
+{% block title %}Item Details{% endblock title %}
+
+{% block body %}
+<form action="/buyer/result/" method="post">
+    {% csrf_token %}
+    enter item name<input type="text" name="item_name"><br>
+    enter city <input type="text" name="city">
+    <input type="submit" value="submit">
+</form>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Car</h5><hr>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Bike</h5><hr>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">Mobile</h5><hr>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">Tablet</h5><hr>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">Laptop</h5><hr>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">House</h5><hr>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+      </div>    
+</div>
+{% endblock %}
+

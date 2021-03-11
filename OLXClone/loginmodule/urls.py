@@ -1,4 +1,4 @@
-"""OLXClone URL Configuration
+"""LearnDjango URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -14,14 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
-from django.conf import settings
-from django.conf.urls.static import static
+from django.urls import path
+from . import views
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('navigation.urls')),
-    path('loginmodule/',include('loginmodule.urls')),
-    path('seller/',include('seller.urls')),
-    path('buyer/',include('buyer.urls')),
-    path('user/',include('user.urls')),
-]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    # path('admin/', admin.site.urls),
+    path('login/',views.login,name="login"),
+    path('signup/',views.signup,name="signup"),
+    path('role/',views.role,name="role"),
+
+]
