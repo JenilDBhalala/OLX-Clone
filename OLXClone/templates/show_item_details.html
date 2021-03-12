@@ -14,18 +14,17 @@
       </div>
       <div class="col-md-4">
         <div class="card-body">
-          <h3 class="card-title">{{item.item_name}}</h3>
-          <h5 class="mt-0 text-50">Price: &#8377 {{item.prize}}</h5>
+          <h3 class="card-title">{{item.item_name}}</h3><hr>
+          <h5 class="mt-0 text-50">Price: &#8377 {{item.price}}</h5><hr>
           <p class="card-text">{{item.description}}</p>
           <h6 class="mt-0 text-50">Model year: {{item.model_year}}</h6><br>
-          <i style="font-size:19px" class="fa mb-3">&#xf041 {{item.city}}</i><br>
+          <i style="font-size:19px" class="fa mb-3">&#xf041 {{item.area}},{{item.city|capfirst}}</i><br>
           <i style="font-size:19px" class="fa">&#xf095 {{item.mo_no}}</i>
         </div>
       </div>
     </div>
     {% endif %}
   </div>
-  <br><br>
-  {% include 'footer.html' %}
+    
 {% endblock %}
 

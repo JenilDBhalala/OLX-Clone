@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'OLXClone.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE' : 'django.db.backends.mysql',
-        'NAME' : 'firstproject',
+        'NAME' : 'olxclone',
         'USER' : 'root',
-        'PASSWORD' : 'jenil',
+        'PASSWORD' : 'bB@12345',
         'HOST' : 'localhost',
         'PORT' : '3306',
     }
@@ -132,7 +132,6 @@ STATICFILES_DIRS = [
 STATIC_URL = '/static/'
 # MEDIA_URL='/media/'
 MEDIA_ROOT=BASE_DIR/'media'
-
 #for error message
 MESSAGE_TAGS = {
     messages.ERROR:'danger'

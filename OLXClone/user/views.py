@@ -7,10 +7,13 @@ from seller.forms import AddItemForm
 # Create your views here.
 
 def your_products(request):
-    usr_id=request.user.id
-    items=Item.objects.filter(seller_id=usr_id)
-    print("before render")
-    return render(request,'user/your_products.html',{'items':items})
+    if request.user.is_authenticated:
+        usr_id=request.user.id
+        items=Item.objects.filter(seller_id=usr_id)
+        return render(request,'user/your_products.html',{'items':items})
+    else:
+        return HttpResponse("404-Not Found")
+
 
 def edit_item(request,id):
     if request.user.is_authenticated:
@@ -20,9 +23,9 @@ def edit_item(request,id):
             fm=AddItemForm(request.POST,request.FILES,instance=itm)
             if fm.is_valid():
                 fm.save()
-                messages.success(request, "Item details updated succesfully")
+                messages.success(request, "item details updated succesfully")
             else:
-                messages.error(request, "Item details not updated")
+                messages.error(request, "item details not updated")
             return redirect('/user/your_products/')
         else:
             itm=Item.objects.get(pk=id)
@@ -37,7 +40,7 @@ def delete_item(request,id):
     if request.user.is_authenticated:
         itm=Item.objects.get(pk=id)
         itm.delete()
-        messages.success(request, "Item deleted succesfully")
+        messages.success(request, "item deleted succesfully")
         # itm=Item.objects.get(pk=id))
         return redirect('/user/your_products/')
     else:

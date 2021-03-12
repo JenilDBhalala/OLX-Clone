@@ -11,9 +11,5 @@ urlpatterns = [
     path('signup', views.handleSignUp, name="handleSignUp"),
     path('login', views.handeLogin, name="handleLogin"),
     path('logout', views.handelLogout, name="handleLogout"),
-    path("search/", views.search, name="search"),
-    # path("productview/", views.productview, name="ProductView"),
-    # path("checkout/", views.checkout, name="CheckOut"),
-    # path("", views.index, name="OLXClone")
-    # path("", views.index, name="OLXClone")
+    path("search/", views.search, name="Search"),
 ]

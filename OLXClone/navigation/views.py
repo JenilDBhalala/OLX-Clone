@@ -4,12 +4,13 @@ from navigation.models import Contact
 from django.contrib import messages
 from django.contrib.auth.models import User 
 import re
-from django.contrib.auth  import authenticate, login, logout
+from django.contrib.auth  import authenticate,  login, logout
 from seller.models import Item
 # Create your views here.
 
 def home(request):
-    itms=Item.objects.all()
+    itms=reversed(Item.objects.all())
+    print(itms)
     return render(request, 'home/home.html',{'items':itms})
 
 def about(request):
@@ -30,7 +31,8 @@ def contact(request):
                 messages.success(request, "Your message has been sent successfully")
         return render(request, "home/contact.html")
     else:
-        return HttpResponse("404 - Not Found")
+        messages.error(request,"For Contact Please Login!!!")
+        return redirect("/")
 
 def help(request):
     return render(request, 'home/help.html')
@@ -67,7 +69,6 @@ def handleSignUp(request):
             messages.error(request, " Provided e-mail is Invalid")
             return redirect('/') 
 
-
         # Create the user
         myuser = User.objects.create_user(username, email, pass1)
         myuser.first_name= fname
@@ -102,16 +103,20 @@ def handelLogout(request):
     return redirect('/')
 
 def search(request):
-    query=request.GET['query']
+    query=str(request.GET['query'])
     if query is not "":
         if len(query)>75 and len(query)<1:
-            Items=Item.objects.none()
+            Items=set()
         else:
-            itemByName = Item.objects.filter(item_name__icontains=query)
-            itemByCity = Item.objects.filter(city__icontains=query)
-            itemByDescr = Item.objects.filter(description__icontains=query)
-            Items = itemByName.union(itemByCity,itemByDescr)
-        if Items.count()==0:
+            split_query=query.split()
+            Items=set(Item.objects.all())
+            for q in split_query:
+                item1=Item.objects.filter(item_name__icontains=q)
+                item2 = Item.objects.filter(city__icontains=q)
+                item3 = Item.objects.filter(description__icontains=q)
+                item=set(item1.union(item2,item3))
+                Items=Items & item
+        if len(Items)==0:
             messages.warning(request, "No search results found. Please refine your query.")
         params={'items': Items, 'query': query}
         return render(request, 'home/search.html', params)

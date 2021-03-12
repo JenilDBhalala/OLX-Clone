@@ -13,9 +13,10 @@
             <th scope="col">Product Name</th>
             <th scope="col">Price</th>
             <th scope="col">Model Year</th>
-            <th scope="col">City</th>
+            <th scope="col">Address</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
+            <th scope="col">View</th>
           </tr>
         </thead>
         <tbody>
@@ -24,9 +25,9 @@
                     <th scope="row">{{x.id}}</th>
                     <td>{{x.date}}</td>
                     <td>{{x.item_name}}</td>
-                    <td>{{x.prize}}</td>
+                    <td>{{x.price}}</td>
                     <td>{{x.model_year}}</td>
-                    <td>{{x.city}}</td>
+                    <td>{{x.area}},{{x.city|capfirst}}</td>
                     <td>
                         <form action="{% url 'edit_item' x.id %}" method="get">
                             {% csrf_token %}
@@ -39,8 +40,15 @@
                             <input type="submit" value="Delete" class="btn btn-outline-danger">
                         </form>
                     </td>
+                    <td>
+                        <form action="{% url 'show_item_details' x.id %}" method="post" >
+                            {% csrf_token %}
+                            <input type="submit" value="view" class="btn btn-outline-primary"></h4>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
+          
         </tbody>
       </table>
     </div>
