@@ -16,21 +16,24 @@
                 <li> Try different keywords.</li>
             </ul>         
             {% endif %}
+            <br>
         <div class="row">
             {% for x in items %}
             <div class="col-sm-4">
-            <div class="card text-dark bg-light mb-3" style="max-width: 19rem;">
-                <div class="card-header">{{x.item_name}}</div>
-                <img src="{{x.photo.url}}" class="card-img-top" height="200px">
-                <div class="card-body">
-                
-                    <form action="{% url 'show_item_details' x.id %}" method="post" class="d-inline" style="margin-left: 35%;">
-                    {% csrf_token %}
-                    <h4 class="card-title">&#8377 {{x.prize}} <input type="submit" value="view" class="btn btn-outline-success"> </h4>
-                    </form>
+                <div class="card text-dark bg-light mb-3" style="max-width: 19rem;">
+                    <div class="card-header">{{x.item_name}}</div>
+                    <img src="{{x.photo.url}}" class="card-img-top" height="200px">
+                    <div class="card-body">
+                        <form action="{% url 'show_item_details' x.id %}" method="post" class="d-inline" style="margin-left: 35%;">
+                        {% csrf_token %}
+                        <h4 class="card-title">&#8377 {{x.prize}} <input type="submit" value="view" class="btn btn-outline-success"> </h4>
+                        </form>
+                    </div>
                 </div>
-            </div>
             </div>
             {% endfor %}
         </div>
+    </div>
+    <br><br>
+    {% include 'footer.html' %}
  {% endblock %}

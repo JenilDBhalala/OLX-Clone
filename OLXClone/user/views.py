@@ -12,7 +12,6 @@ def your_products(request):
     print("before render")
     return render(request,'user/your_products.html',{'items':items})
 
-
 def edit_item(request,id):
     if request.user.is_authenticated:
         if request.method=="POST":
@@ -21,9 +20,9 @@ def edit_item(request,id):
             fm=AddItemForm(request.POST,request.FILES,instance=itm)
             if fm.is_valid():
                 fm.save()
-                messages.success(request, "item details updated succesfully")
+                messages.success(request, "Item details updated succesfully")
             else:
-                messages.error(request, "item details not updated")
+                messages.error(request, "Item details not updated")
             return redirect('/user/your_products/')
         else:
             itm=Item.objects.get(pk=id)
@@ -38,7 +37,7 @@ def delete_item(request,id):
     if request.user.is_authenticated:
         itm=Item.objects.get(pk=id)
         itm.delete()
-        messages.success(request, "item deleted succesfully")
+        messages.success(request, "Item deleted succesfully")
         # itm=Item.objects.get(pk=id))
         return redirect('/user/your_products/')
     else:

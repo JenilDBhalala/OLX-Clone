@@ -22,5 +22,4 @@ urlpatterns = [
     path('addItem/',views.addItem,name="addItem"),
     # path('signup/',views.signup,name="signup"),
     # path('role/',views.role,name="role"),
-
 ]

@@ -3,51 +3,59 @@
 {% block title %} Home {% endblock title %}
 
 {% block body %}
-<br><br>
-<div>
-  <center>
-    <img src="{% static 'home_image.jpg' %}" width="1250px" height="200px">
-  </center>
-</div>
-<br><br>
-<div class="container">
-  <div class="card mb-3" style="margin-top:5%; margin-left : 5%; max-width: 1000px;">
-    <div class="row g-0">
-      <div class="col-md-6">
-        <img src="{% static 'buy-and-sell3.jpg' %}" class="card-img-top" height="300px">
-      </div>
+    <br><br>
+    <div>
+      <center>
+        <img src="{% static 'home_image.jpg' %}" width="1250px" height="180px">
+      </center>
+    </div>
 
-      <div class="col-md-6">
-        <div class="card-body">
-          <br><br>
-          <center>
-            <h1 class="card-title">Get Started with OLXClone</h1><br>
-            <a href="/buyer/buyItem/" class="btn btn-outline-primary">Buy Now</a>
-            <a href="/seller/addItem/" class="btn btn-outline-secondary">Sell Now</a>
-          </center>
+    <br><br>
+    <div class="container">
+      <div class="card mb-3" style="margin-top:5%; margin-left : 5%; max-width: 1000px;">
+        <div class="row g-0">
+
+          <div class="col-md-6">
+            <img src="{% static 'buy-and-sell3.jpg' %}" class="card-img-top" height="300px">
+          </div>
+
+          <div class="col-md-6">
+            <div class="card-body">
+              <br><br>
+              <center>
+                <h1 class="card-title">Get Started with OLXClone</h1><br>
+                <a href="/buyer/buyItem/" class="btn btn-outline-primary">Buy Now</a>
+                <a href="/seller/addItem/" class="btn btn-outline-secondary">Sell Now</a>
+              </center>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<br><br><br>
-<div class="container mb-10">
-<h3>Fresh Recommendations</h3><br>
-  <div class="row">
-    {% for x in items %}
-    <div class="col-sm-4">
-      <div class="card text-dark bg-light mb-3" style="max-width: 19rem;">
-        <div class="card-header">{{x.item_name}}</div>
-        <img src="{{x.photo.url}}" class="card-img-top" height="200px">
-        <div class="card-body">   
-            <form action="{% url 'show_item_details' x.id %}" method="post" class="d-inline" style="margin-left: 35%;">
-              {% csrf_token %}
-              <h4 class="card-title">&#8377 {{x.prize}} <input type="submit" value="view" class="btn btn-outline-success"> </h4>
-            </form>
+    <br><br><br>
+
+    <div class="container mb-10">
+    <h3>Fresh Recommendations</h3><br>
+      <div class="row">
+        {% for x in items %}
+        <div class="col-sm-4">
+          <div class="card text-dark bg-light mb-3" style="max-width: 19rem;">
+            <div class="card-header">{{x.item_name}}</div>
+            <img src="{{x.photo.url}}" class="card-img-top" height="200px">
+            <div class="card-body">   
+                <form action="{% url 'show_item_details' x.id %}" method="post" class="d-inline" style="margin-left: 35%;">
+                  {% csrf_token %}
+                  <h4 class="card-title">&#8377 {{x.prize}} <input type="submit" value="view" class="btn btn-outline-success"> </h4>
+                </form>
+            </div>
+          </div>
         </div>
+        {% endfor %}
       </div>
     </div>
-    {% endfor %}
-  </div>
+  {% include 'footer.html' %}
 {% endblock %}
+
+
