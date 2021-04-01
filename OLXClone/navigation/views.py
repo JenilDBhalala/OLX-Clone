@@ -8,14 +8,17 @@ from django.contrib.auth  import authenticate,  login, logout
 from seller.models import Item
 # Create your views here.
 
+#function for showing Home page 
 def home(request):
     itms=reversed(Item.objects.all())
     print(itms)
     return render(request, 'home/home.html',{'items':itms})
 
+#For about page
 def about(request):
     return render(request, 'home/about.html')
 
+#For contact to admin 
 def contact(request):
     if request.user.is_authenticated:
         if request.method=="POST":
@@ -34,8 +37,7 @@ def contact(request):
         messages.error(request,"For Contact Please Login!!!")
         return redirect("/")
 
-def help(request):
-    return render(request, 'home/help.html')
+#for SingUP
 
 def handleSignUp(request):
     if request.method=="POST":
@@ -78,8 +80,9 @@ def handleSignUp(request):
         return redirect('/')
 
     else:
-        return HttpResponse("404 - Not found")
+        return render(request,'error404.html')
 
+#This function check authentication for user 
 def handeLogin(request):
     if request.method=="POST":
         # Get the post parameters
@@ -95,13 +98,15 @@ def handeLogin(request):
             messages.error(request, "Invalid credentials! Please try again!")
             return redirect("/")
 
-    return HttpResponse("404- Not Found")
+    return render(request,'error404.html')
 
+#for logout
 def handelLogout(request):
     logout(request)
     messages.success(request, "Successfully Logged out!")
     return redirect('/')
 
+#function would be called for search item on navigation bar 
 def search(request):
     query=str(request.GET['query'])
     if query is not "":
@@ -114,7 +119,8 @@ def search(request):
                 item1=Item.objects.filter(item_name__icontains=q)
                 item2 = Item.objects.filter(city__icontains=q)
                 item3 = Item.objects.filter(description__icontains=q)
-                item=set(item1.union(item2,item3))
+                item4 = Item.objects.filter(category__icontains=q)
+                item=set(item1.union(item2,item3,item4))
                 Items=Items & item
         if len(Items)==0:
             messages.warning(request, "No search results found. Please refine your query.")
@@ -122,3 +128,5 @@ def search(request):
         return render(request, 'home/search.html', params)
     else:
         return redirect("/")
+
+

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %} add Item{% endblock title %}
+
+{% block body %}
+<div class="container my-3 col-8" style="background-color : #F5F9F8 ;">
+    <h3>Add Item Details</h3><br>
+    <form action="/seller/addItem/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Submit" class="btn btn-secondary"><br><br>
+</form>
+</div>
+{% endblock %}

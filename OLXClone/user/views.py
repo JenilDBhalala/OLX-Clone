@@ -4,46 +4,33 @@ from django import forms
 from django.contrib import messages
 from seller.models import Item
 from seller.forms import AddItemForm
+from .forms import UpdateProfileForm
+
 # Create your views here.
 
-def your_products(request):
+#This function shows list of product which entered by user
+def my_products(request):
     if request.user.is_authenticated:
         usr_id=request.user.id
         items=Item.objects.filter(seller_id=usr_id)
-        return render(request,'user/your_products.html',{'items':items})
+        return render(request,'user/my_products.html',{'items':items})
     else:
-        return HttpResponse("404-Not Found")
+        return render(request,'error404.html')
 
-
-def edit_item(request,id):
+#For upadate profile 
+def updateProfile(request):
     if request.user.is_authenticated:
         if request.method=="POST":
-            print("this is inside post")
-            itm=Item.objects.get(pk=id)
-            fm=AddItemForm(request.POST,request.FILES,instance=itm)
+            fm=UpdateProfileForm(request.POST,instance=request.user)
             if fm.is_valid():
                 fm.save()
-                messages.success(request, "item details updated succesfully")
+                messages.success(request,"Profile Modification Done")
+                return redirect('/')
             else:
-                messages.error(request, "item details not updated")
-            return redirect('/user/your_products/')
+                messages.success(request,"Profile Modification Done")
+                return redirect('/user/profile/update/')
         else:
-            itm=Item.objects.get(pk=id)
-            fm=AddItemForm(instance=itm)
-            fm.fields['seller_id'].widget=forms.HiddenInput()
-            return render(request,'user/edit_item.html',{'form':fm})
+            fm=UpdateProfileForm(instance=request.user)
+            return render(request,'user/updateProfile.html',{'form':fm})
     else:
-        return HttpResponse("404- Not Found")
-
-
-def delete_item(request,id):
-    if request.user.is_authenticated:
-        itm=Item.objects.get(pk=id)
-        itm.delete()
-        messages.success(request, "item deleted succesfully")
-        # itm=Item.objects.get(pk=id))
-        return redirect('/user/your_products/')
-    else:
-        return HttpResponse("404- Not Found")
-
-
+        return render(request,'error404.html')

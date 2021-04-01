@@ -48,10 +48,6 @@
             <li class="nav-item {% block contactactive %}  {% endblock contactactive %} ">
               <a class="nav-link" href="/contact/">Contact</a>
             </li>
-
-            <li class="nav-item {% block blogactive %}  {% endblock blogactive %} ">
-              <a class="nav-link" href="/help/">Help</a>
-            </li>
         
           </ul>
 
@@ -59,7 +55,6 @@
             <form method="get" action="/search/" class="form-inline my-2 my-lg-0 mx-3">
               <input class="form-control mr-sm-2" placeholder="Search" aria-label="Search" name="query" id="query">
               <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Search</button>
-              <a href="/admin" role="button" target="_blank" class="btn btn-outline-success m-2 my-sm-0"> Admin Panel </a>
             </form>
             
             {% if user.is_authenticated %}
@@ -67,8 +62,9 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="/user/your_products/">Your Products</a>
-                      <a class="dropdown-item" href="/logout">Logout</a>
+                    <a class="dropdown-item" href="/user/my_products/">My Products</a>
+                    <a class="dropdown-item" href="/user/profile/update/">Profile Modification</a>
+                    <a class="dropdown-item" href="/logout">Logout</a>
                 </div>
               </li>
             </ul>
@@ -192,6 +188,6 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    
+    {% include 'footer.html' %}
   </body>
 </html>

@@ -7,7 +7,6 @@ urlpatterns = [
     path("", views.home, name="OLXClone"),
     path("about/", views.about, name="AboutUs"),
     path("contact/", views.contact, name="ContactUs"),
-    path("help/", views.help, name="Help"),
     path('signup', views.handleSignUp, name="handleSignUp"),
     path('login', views.handeLogin, name="handleLogin"),
     path('logout', views.handelLogout, name="handleLogout"),

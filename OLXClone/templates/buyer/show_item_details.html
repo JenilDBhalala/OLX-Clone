@@ -1,0 +1,76 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Item Details{% endblock title %}
+
+{% block body %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+
+<div class="container py-4">
+  {% if item %}
+<h4 class="alert alert-info mt-3">Items Details</h4>
+  <div class="row">
+      <div class="col-sm-8">
+          <img class="img-fluid" src="{{item.photo.url}}">
+
+          <div class="card text-dark bg-light mt-3">
+            <div class="card-header">
+                <b>Description</b>
+            </div>
+            <div class="card-body">
+                <h6 class="card-title">
+                    <p class="card-text">{{item.description}}</p>
+                </h6>
+            </div>
+          </div>
+      </div>
+
+      <div class="col-sm-3 offset-sm-1">
+          <div class="card text-dark bg-light mb-3">
+              <div class="card-header">
+                  <b>Info</b>
+              </div>
+              <div class="card-body">
+                  <h6 class="card-title">
+                      <ul class="list-unstyled">
+                          <li class="mb-3"><p class="card-text">Name :&nbsp;&nbsp; {{item.item_name}}</p></li>
+                          <li class="mb-3"><p class="card-text">Price :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i style="font-size:19px" class="fa mb-3"></i>&#8377 {{item.price}}</p></li>
+                          <li class="mb-3"><p class="card-text">Model year: {{item.model_year}}</p> </li>
+                      </ul>
+                  </h6>
+              </div>
+          </div>
+
+          
+
+          <div class="card text-dark bg-light mb-3">
+            <div class="card-body">
+              <h6 class="card-title" style="font-size: 17px;">
+                  <ul class="list-unstyled">
+                      <li class="mb-3"><p class="card-text"><i style="font-size:19px" class="fa mb-3">&#xf041</i>&nbsp;&nbsp;{{item.area}},{{item.city|capfirst}}</p></li>
+                      <li class="mb-3"><p class="card-text"><i style="font-size:19px" class="fa mb-3">&#xf095</i>&nbsp;&nbsp;{{item.mo_no}}</p></li>
+                  </ul>
+              </h6>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-info" style="width: 100%;">Contact Owner</button>
+          
+      </div>
+  </div>
+  {% endif %}
+</div>
+<style>
+  .card-title{
+      font-size: 17px;
+  }
+
+  .title{
+      font-family: Arial, Helvetica, sans-serif;
+  }
+</style>
+{% endblock %}
+
+

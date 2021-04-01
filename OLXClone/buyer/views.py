@@ -5,6 +5,7 @@ from django.contrib import messages
 from .forms import FilterForm
 # Create your views here.
 
+# Fuction For buyItem
 def buyItem(request):
     if request.user.is_authenticated:
         if request.method=="POST":
@@ -31,37 +32,29 @@ def buyItem(request):
                         return redirect("/buyer/buyItem/")
                 if len(Items)==0:
                     messages.warning(request, "No search results found. Please refine your query.")
-                return render(request, 'result.html',{'items': Items, 'query': query})
+                return render(request, 'buyer/result.html',{'items': Items, 'query': query})
             else:
-                messages.warning(request,"please enter valid filter credentials!")
+                messages.warning(request,"Please enter valid filter credentials!")
                 return redirect("/buyer/buyItem/")
         else:
             fm=FilterForm()
-            return render(request,'buyItem.html',{'form':fm})
+            return render(request,'buyer/buyItem.html',{'form':fm})
     else:
-        messages.error(request,"To buy Item Please Login!!!")
+        messages.error(request,"To Buy Item Please Login!!!")
         return redirect('/')
 
-def result(request):
-    if request.method=='POST':
-        name=request.POST['item_name']
-        city=request.POST['city']
-        items=Item.objects.filter(item_name=name,city=city)
-        print(items)
-        return render(request,'result.html',{'items':items})
-    else:
-        return HttpResponse('404-Not Found')
 
+#After click on view on item this function would be called
 
 def show_item(request,id):
     if request.user.is_authenticated:
         if request.method=='POST':
             item=Item.objects.get(pk=id)
-            return render(request,'show_item_details.html',{'item':item})
+            return render(request,'buyer/show_item_details.html',{'item':item})
         else:
-            return HttpResponse('404-Not Found')
+            return render(request,'error404.html')
     else:
-        return HttpResponse('404-Not Found')
+        return render(request,'error404.html')
 
 
         

@@ -3,5 +3,116 @@
 {% block title %} About{% endblock title %}
 
 {% block body %}
-    about
- {% endblock %}
+    
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+<body>
+    <div class="about-section bg-dark">
+        <h1>About Us</h1>
+        <p>“Websites promote you 24/7: No employee will do that.” - Paul Cookson</p>
+    </div>
+
+    <h2 style="text-align:center"></h2>
+    <div class="row py-4">
+
+        <div class="column">
+            <div class="card">
+                <hr>
+                <img src="https://media-exp1.licdn.com/dms/image/C4D03AQH9x162Wv7NMg/profile-displayphoto-shrink_800_800/0/1617005200537?e=1622678400&v=beta&t=4Tm6gfNW2GR_4znCZWUTpcKFWFAK3lHzVefEQFhh6v4"
+                    alt="John" style="width:100%">
+                <div class="container">
+                    <hr>
+                    <h3>Jenil Bhalala</h3>
+                    <p class="title">CSE 2nd year Student</p>
+                    <p class="position">Pursuing B.Tech in computer engineering at Dharamsinh Desai University, Nadiad
+                    </p>
+                    <p class="mail"><i class="fa">&#xf0e0&nbsp</i> jenilbhalala@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="card">
+                <hr>
+                <img src="https://media-exp1.licdn.com/dms/image/C5603AQExpX0sde_SxA/profile-displayphoto-shrink_800_800/0/1617007321058?e=1622678400&v=beta&t=-hxPYGbyrPuqwFHg78JXYlg00BdadEk5ZYIHDVmorTM"
+                    alt="Jane" style="width:100%">
+                <div class="container">
+                    <hr>
+                    <h3>Bhavin Babariya</h3>
+                    <p class="title">CSE 2nd year Student</p>
+                    <p class="position">Pursuing B.Tech in computer engineering at Dharamsinh Desai University, Nadiad
+                    </p>
+                    <p class="mail"><i class="fa">&#xf0e0&nbsp</i> bhavinbabariya@gmail.com</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <hr>
+                <img src="https://media-exp1.licdn.com/dms/image/C4E03AQEIRBxceG2x1g/profile-displayphoto-shrink_800_800/0/1592487051996?e=1622678400&v=beta&t=yaKYEQi4x9nbKf5BVpKh0uRR_QxQDtP5CxKiP7v2P2A"
+                    alt="Mike" style="width:100%">
+                <div class="container">
+                    <hr>
+                    <h3>Fenil Domadiya</h3>
+                    <p class="title">CSE 2nd year Student</p>
+                    <p class="position">Pursuing B.Tech in computer engineering at Dharamsinh Desai University, Nadiad
+                    </p>
+                    <p class="mail"><i class="fa">&#xf0e0&nbsp</i> fenildomadiya@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+    }
+
+    img {
+        border-radius: 50%;
+    }
+
+    .column {
+        float: left;
+        width: 25%;
+        margin-bottom: 15px;
+        margin-left: 80px;
+        margin-top: 10px;
+        padding: 0 10px;
+    }
+
+    .card {
+        opacity: 0.9;
+    }
+
+    .about-section {
+        padding: 10px;
+        text-align: center;
+        /* background-color: #181313; */
+        color: white;
+        opacity: 0.7;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .title {
+        color: #555;
+    }
+
+    h3 {
+        color: black;
+    }
+
+    .position {
+        color: grey;
+    }
+
+    .mail {
+        color: #555;
+    }
+</style>
+{% endblock %}

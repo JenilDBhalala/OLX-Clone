@@ -34,34 +34,36 @@
   </div>
 </div>
 
-<!-- <div class="container" style="border:12px solid black;top: 0%;left: 30%; width: 350px;height: 350px;">
-  <img src="{% static 'buy-and-sell3.jpg' %}" width="250px" height="250px">
-  <p>Hello ji</p>
-</div> -->
 
 <br><br><br>
 <div class="container mb-10">
-<h3>Fresh Recommendations</h3><br>
+
+  <h3>Fresh Recommendations</h3><br>
   <div class="row">
+
     {% for x in items %}
+    {% if forloop.counter < 16 %} 
+
     <div class="col-sm-4">
-     
       <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
         <div class="card-header">{{x.item_name}}</div>
-        <img src="{{x.photo.url}}" class="card-img-top" height="200px">
-        <div class="card-body">
-          <h4 class="card-title">&#8377 {{x.price}}
-            <form action="{% url 'show_item_details' x.id %}" method="post" class="d-inline" style="margin-left:30%;">
-              {% csrf_token %}
-              <input type="submit" value="view" class="btn btn-outline-success"></h4>
-          </form>
-        </div>
+          <img src="{{x.photo.url}}" class="card-img-top" height="200px">
+          <div class="card-body">
+            <h4 class="card-title">&#8377 {{x.price}}
+              <form action="{% url 'show_item_details' x.id %}" method="post" class="d-inline" style="margin-left:30%;">
+                {% csrf_token %}
+                <input type="submit" value="view" class="btn btn-outline-success">
+              </form>
+            </h4>
+          </div>
         <div class="card-footer">
           <i style="font-size:19px" class="fa mb-3">&#xf041</i>
-            <b style="font-size:15px">&nbsp;&nbsp;{{x.area}},{{x.city|capfirst}}</b>
+          <b style="font-size:15px">&nbsp;&nbsp;{{x.area}},{{x.city|capfirst}}</b>
         </div>
       </div>
-    </div>
-    {% endfor %}
   </div>
+  {%endif%}
+  {% endfor %}
+</div>
+</div>
 {% endblock %}

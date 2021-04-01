@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} add Item{% endblock title %}
+
+{% block body %}
+<div class="container my-3 col-8" style="background-color : #F5F9F8 ;">
+    <h4 class="text-center alert alert-info mt-3">Update Items Details</h4>
+    <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="update" class="btn btn-secondary">
+</form>
+</div>
+{% endblock %}
+

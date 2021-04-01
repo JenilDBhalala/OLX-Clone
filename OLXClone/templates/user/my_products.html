@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Products{% endblock title %}
+
+{% block body %}
+<div class="container mb-10">
+    <h4 class="text-center alert alert-info mt-3">Your Items</h4>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date & Time</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Model Year</th>
+            <th scope="col">Address</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+            <th scope="col">View</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for x in items %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{x.date}}</td>
+                    <td>{{x.item_name}}</td>
+                    <td>{{x.price}}</td>
+                    <td>{{x.model_year}}</td>
+                    <td>{{x.area}},{{x.city|capfirst}}</td>
+                    <td>
+                        <form action="{% url 'edit_item' x.id %}" method="get">
+                            {% csrf_token %}
+                            <input type="submit" value="Edit" class="btn btn-outline-success">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{% url 'delete_item' x.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Delete" class="btn btn-outline-danger">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{% url 'show_item_details' x.id %}" method="post" >
+                            {% csrf_token %}
+                            <input type="submit" value="view" class="btn btn-outline-primary"></h4>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+          
+        </tbody>
+      </table>
+    </div>
+{% endblock %}
+

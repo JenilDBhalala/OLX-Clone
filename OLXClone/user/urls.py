@@ -19,7 +19,6 @@ from . import views
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('your_products/',views.your_products,name="your_products"),
-    path('edit_item/<int:id>',views.edit_item,name="edit_item"),
-    path('delete_item/<int:id>',views.delete_item,name="delete_item"),
+    path('my_products/',views.my_products,name="my_products"),
+    path('profile/update/',views.updateProfile,name="updateProfile"),
 ]
